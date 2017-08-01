@@ -12,6 +12,26 @@ class BusinessesController < ApplicationController
       render :new
     end
   end
+  def edit
+    @category = Category.find(params[:category_id])
+    @business = @category.businesses.find(params[:id])
+    render :edit
+  end
+  def update
+    @category = Category.find(params[:category_id])
+    @business = @category.businesses.find(params[:id])
+    if @business.update(business_params)
+      redirect_to category_path(@business.category)
+    else
+      render :edit
+    end
+  end
+  def destroy
+    @category = Category.find(params[:category_id])
+    @business = @category.businesses.find(params[:id])
+    @business.destroy
+    redirect_to category_path(@business.category)
+  end
 
   private
     def business_params
