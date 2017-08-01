@@ -1,35 +1,28 @@
 class CategoriesController < ApplicationController
   def index
     @categories = Category.all
-    render :index
   end
   def show
     @category = Category.find(params[:id])
-    render :show
   end
   def new
     @category = Category.new
-    render :new
   end
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path
+      flash[:notice] = "Category successfully added!"
+      redirect_to categories_path(@category)
     else
-      render :new
     end
   end
   def edit
-    @category = Category.find(params[:id])
-    render :edit
-  end
+    @category = Category.find(params[:id])  end
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
       redirect_to categories_path
-    else
-      render :edit
-    end
+    else    end
   end
   def destroy
     @category = Category.find(params[:id])
