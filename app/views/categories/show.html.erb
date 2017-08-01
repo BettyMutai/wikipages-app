@@ -1,5 +1,20 @@
 <h1><%= @category.name %></h1>
+<% if @category.businesses.any? %>
+<h4>Here are all the businesses under this category:</h4>
+<ul>
+  <% @category.businesses.each do |business|%>
+    <h4><%= business.name %></h4>
+    <li>Address: <%= business.address %></li>
+    <li>Phone: <%= business.phone %></li>
+    <li>Website: <%= business.website %></li>
+    <li>Hours Opened: <%= business.operational_hours %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no businesses yet!</p>
+<% end %>
 
+<p><%= link_to "Add a business", new_category_business_path(@category) %></p>
 <p><%= link_to "Edit", edit_category_path(@category) %></p>
 <p><%= link_to "Delete", category_path(@category), :data => {:confirm => "You sure?", :method => "delete"} %></p>
 <p><%= link_to "Return to categories", categories_path %></p>
