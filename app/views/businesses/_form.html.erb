@@ -1,0 +1,15 @@
+<%= render 'layouts/errors', :object => @business %>
+
+<%= form_for [@category, @business] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+  <%= f.label :website %>
+  <%= f.text_field :website %>
+  <%= f.label :operational_hours %>
+  <%= f.text_field :operational_hours %>
+  <%= f.submit %>
+<% end %>
