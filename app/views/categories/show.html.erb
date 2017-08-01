@@ -8,6 +8,8 @@
     <li>Phone: <%= business.phone %></li>
     <li>Website: <%= business.website %></li>
     <li>Hours Opened: <%= business.operational_hours %></li>
+    <%= link_to "Edit", edit_category_business_path(@category, business) %> |
+    <%= link_to "Delete", category_business_path(@category, business), :data => {:confirm => "Are you sure?", :method => "delete"} %>
   <% end %>
 </ul>
 <% else %>
@@ -15,6 +17,7 @@
 <% end %>
 
 <p><%= link_to "Add a business", new_category_business_path(@category) %></p>
-<p><%= link_to "Edit", edit_category_path(@category) %></p>
+
+<p><%= link_to "Edit Category", edit_category_path(@category) %></p>
 <p><%= link_to "Delete", category_path(@category), :data => {:confirm => "You sure?", :method => "delete"} %></p>
 <p><%= link_to "Return to categories", categories_path %></p>
